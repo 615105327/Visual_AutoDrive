@@ -1,16 +1,16 @@
 #include <Servo.h>   
 #define SER1_BAUD 9600
 /*电机驱动引脚*/
-#define PWMB_IN1  11       //定义IN1引脚
-#define PWMB_IN2 6       //定义IN2引脚
-#define PWMA_IN1 5        //定义IN3引脚
-#define PWMA_IN2 3        //定义IN4引脚
+#define PWMB_IN1  11       //define pins
+#define PWMB_IN2 6       
+#define PWMA_IN1 5        
+#define PWMA_IN2 3        
 #define Servor_Pin    7
-#define  BEEP_PIN    12             //定义蜂鸣器引脚D6
-#define  NLED_PIN    13           //定义呼吸灯引脚D11
+#define  BEEP_PIN    12             
+#define  NLED_PIN    13           
 #define  NLED_MS_BETWEEN        500
 #define  DUOJI_MS_BETWEEN       20.000
-String uart1_receive_buf = "";   //声明一个字符串数组
+String uart1_receive_buf = "";   
 int pwm_value=1500;
 char flag_x=0;
 char flag_y=0;
@@ -207,13 +207,13 @@ void handle_uart1() {
             if((uart1_receive_buf[2] =='R') && (uart1_receive_buf[3] =='U')) index=4;
             if((uart1_receive_buf[2] =='L') && (uart1_receive_buf[3] =='D')) index=5;
             if((uart1_receive_buf[2] =='R') && (uart1_receive_buf[3] =='D')) index=6;
-            len = uart1_receive_buf.length();  //获取串口接收数据的长度
+            len = uart1_receive_buf.length();  /
             pwm=0;        
-            for(i = 0; i < len; i++) {              //如果数据没有接收完
-                if(uart1_receive_buf[i] == '-') {         //判断是否为起始符“#”
-                    i++;                                  //下一个字符
-                    while((uart1_receive_buf[i] != '>') && (i<len)) {  //判断是否为#后面的数字检测完
-                        pwm =  pwm*10 + uart1_receive_buf[i] - '0';  //记录P之前的数字
+            for(i = 0; i < len; i++) {            
+                if(uart1_receive_buf[i] == '-') {         
+                    i++;                                  
+                    while((uart1_receive_buf[i] != '>') && (i<len)) {  
+                        pwm =  pwm*10 + uart1_receive_buf[i] - '0'; 
                         i++;
                     }                     
                     //检测完后赋值
