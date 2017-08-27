@@ -1,6 +1,5 @@
 #include <Servo.h>   
 #define SER1_BAUD 9600
-/*电机驱动引脚*/
 #define PWMB_IN1  11       //define pins
 #define PWMB_IN2 6       
 #define PWMA_IN1 5        
